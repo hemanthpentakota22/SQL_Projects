@@ -62,7 +62,7 @@ CASE
     WHEN cou=1 AND status='SUBMITTED' THEN 'AWAITING PROGRESS'
     ELSE 'AWAITING SUBMISSION'
 END AS Final_Status
-FROM (SELECT e.customer_name,e.COUNT(status)as cou FROM (SELECT DISTINCT customer_name,status FROM Customer_Order)e
+FROM (SELECT customer_name,COUNT(status)as cou FROM (SELECT DISTINCT customer_name,status FROM Customer_Order)e
 GROUP BY customer_name)
 a
 LEFT JOIN 
